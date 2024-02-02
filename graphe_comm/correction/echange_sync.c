@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include <mpi.h>
+#include </usr/local/mpich-3.4.1/include/mpi.h>
 
 struct graphe_t
 {

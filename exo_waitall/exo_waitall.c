@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <mpi.h>
+#include </usr/local/mpich-3.4.1/include/mpi.h>
 
 /* Fonction a utiliser pour remplir un tableau qui correspond
    au processus impair odd_rank

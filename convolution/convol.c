@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include "mpi.h"
+#include "/usr/local/mpich-3.4.1/include/mpi.h"
 
 float kernel[3] = {1./3., 1./3., 1./3.};
 
