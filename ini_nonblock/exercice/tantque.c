@@ -19,21 +19,12 @@ int main(int argc, char **argv)
         nsecs = 10;
         sleep(nsecs);
 
-        /* TRAVAIL A FAIRE
-           Envoyer nsecs au processus 1
-         */
+        MPI_Send(&nsecs, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
     }
     else if (rank == 1)
     {
         niter = 0;
-        /* TRAVAIL A FAIRE
-
-           Tant qu'on n'a pas recu nsecs de P0 :
-               
-               niter++;
-               work(niter);
-           */
-
+        MPI_Recv(&nsecs, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("Nsecs = %d s  / Nb iter = %d\n", nsecs, niter);
     }
 

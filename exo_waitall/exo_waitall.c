@@ -65,13 +65,14 @@ int main(int argc, char **argv)
 
     nvals_per_proc = 100000;
 
-    /* TRAVAIL A FAIRE
-
-       Si je suis le processus de rang 0
+    /*
+        Si je suis le processus de rang 0
            Pour tous les processus impairs rang_impair
                remplir un tableau d'entiers tab_snd de taille nvals_per_proc en appelant la fonction : fill_val_array(rang_impair, tab_snd, nvals_per_proc)
-               Envoyer de facon non-bloquante ce tableau au processus rang_impair
-
+               Envoyer de facon non-bloquante ce tableau au processus rang_impair */
+    
+    
+    /*
        Si je suis un processus de rang impair
            Recevoir de facon non-bloquante mon tableau de taille nvals_per_proc
            Verifier le resultat en appelant la fonction check_val_array(rang_impair, tab_rcv, nvals_per_proc)
