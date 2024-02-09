@@ -71,13 +71,13 @@ void echange_buffer(struct graphe_t * graphe,
     for( iv = 0 ; iv < nbv ; iv++ )
 	buff_size += MPI_BSEND_OVERHEAD + taille_msg_snd[iv];
 
-    buff_mpi = malloc(buff_size);
+    buff_mpi = malloc(buff_size); // recopie le contenu des messages
     MPI_Buffer_attach(buff_mpi, buff_size);
 
     for( iv = 0 ; iv < nbv ; iv++ ) {
 	vois = graphe->voisins[rang][iv];
 	MPI_Bsend(msg_snd[iv], taille_msg_snd[iv], MPI_CHAR, vois, tag, MPI_COMM_WORLD);
-    }
+    } // envoie de messages de tout le monde d'abord
 
     for( iv = 0 ; iv < nbv ; iv++ ) {
 	vois = graphe->voisins[rang][iv];

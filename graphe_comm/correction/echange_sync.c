@@ -55,6 +55,8 @@ void afficher_graphe(struct graphe_t *graphe) {
     }
 }
 
+// message : couple(source, destinataire)
+// envoie d'abord les messages aux voisins inférieurs
 void tri_voisins(struct graphe_t * graphe, int *tri_list, int *ptr_nbv_inf)
 {
     int rang, vois, vois_min;
@@ -155,7 +157,7 @@ void echange_synchrone(struct graphe_t * graphe,
     }
     
     free(tri_list);
-}
+} // rassurer que les voinsins dont on attent les messages sont pas bloqués
 
 int main(int argc, char **argv) {
 

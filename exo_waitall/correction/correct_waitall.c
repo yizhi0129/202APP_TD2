@@ -70,8 +70,8 @@ int main(int argc, char **argv)
         int dst_odd = 1;
         int n_odd   = nproc / 2;
         int         tab_snd[nvals_per_proc];
-        MPI_Request tab_req[n_odd];
-        int tab_vals[n_odd*nvals_per_proc];
+        MPI_Request tab_req[n_odd]; // (n_odd) requests
+        int tab_vals[n_odd*nvals_per_proc]; // sous bloc de taille nvals_per_proc pour chaque processus
 
         for(isnd = 0 ; isnd < n_odd ; isnd++)
         {

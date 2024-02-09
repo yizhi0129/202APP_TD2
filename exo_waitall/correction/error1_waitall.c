@@ -70,7 +70,7 @@ int main(int argc, char **argv)
         int dst_odd = 1;
         int n_odd   = nproc / 2;
         int         tab_snd[nvals_per_proc];
-        MPI_Request tab_req[n_odd];
+        MPI_Request tab_req[n_odd]; //
 
         for(isnd = 0 ; isnd < n_odd ; isnd++)
         {
@@ -83,8 +83,9 @@ int main(int argc, char **argv)
             printf("P0 initiates send values [%d, %d] to process P%d\n", tab_snd[0], tab_snd[nvals_per_proc-1], dst_odd);
             dst_odd += 2;
         }
-        MPI_Waitall(n_odd, tab_req, MPI_STATUSES_IGNORE);
-    }
+        MPI_Waitall(n_odd, tab_req, MPI_STATUSES_IGNORE); //terminaison de tous les envois
+        // "send" can appear anytime between MPI_Isend and MPI_Waitall
+    } // same buffer is used for all sends, risk of segmentation violation
     else if (rank % 2 == 1)
     {
         MPI_Request req;

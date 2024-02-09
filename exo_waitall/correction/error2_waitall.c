@@ -69,7 +69,7 @@ int main(int argc, char **argv)
         int isnd;
         int dst_odd = 1;
         int n_odd   = nproc / 2;
-        MPI_Request req;
+        MPI_Request req; // only one request: rewrited each time: (n-1) requests not completed
         int tab_vals[n_odd*nvals_per_proc];
 
         for(isnd = 0 ; isnd < n_odd ; isnd++)

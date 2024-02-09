@@ -59,6 +59,15 @@ void echange_nonbloq(struct graphe_t * graphe,
 	char **msg_rcv, int *taille_msg_rcv) 
 {
     /* A COMPLETER */
+    for (int i = 0; i < graphe->nb_noeuds; i ++)
+    {
+        for (int j = 0; j < graphe->nb_voisins[i]; j ++)
+        {
+            MPI_Request request;
+            MPI_Isend(msg_snd[j], taille_msg_snd[j], MPI_CHAR, graphe->voisins[i][j], 0, MPI_COMM_WORLD, &request);
+            MPI_Recv(msg_rcv[j], taille_msg_rcv[j], MPI_CHAR, graphe->voisins[i][j], 0, MPI_COMM_WORLD, &request);
+        }
+    }
 }
 
 

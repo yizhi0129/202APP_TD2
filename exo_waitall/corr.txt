@@ -1,0 +1,7 @@
+Question 2
+C. MPI_Waitall pour le processus 0 : attente de la fin de tous les envois vers les processus impairs
+
+Quesiton 3
+L’appel à MPI_Waitall par le processus 0 est obligatoire car
+sans Wait l'envoie risque d'être jamais efffectué
+

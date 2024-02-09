@@ -98,7 +98,7 @@ int main(int argc, char **argv)
     {
         int my_val_arr[nvals_per_proc];
 
-        MPI_Recv(my_val_arr, nvals_per_proc, MPI_INT, 0, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Recv(my_val_arr, nvals_per_proc, MPI_INT, 0, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE); // replace Irecv by Recv
 
         check_val_array(rank, my_val_arr, nvals_per_proc);
     }
