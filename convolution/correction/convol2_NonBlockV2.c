@@ -38,7 +38,7 @@ Icommunications(float *my_values, MPI_Request arr_req[4])
 }
 
 void
-wait(MPI_Request arr_req[4])
+wwait(MPI_Request arr_req[4])
 {
     MPI_Waitall(4, arr_req, MPI_STATUSES_IGNORE);
 
@@ -140,7 +140,7 @@ int main(int argc, char **argv)
            Il est obligatoire de terminer les envois/receptions sur my_values1
            avant de lire les valeurs dans convolution( my_values1, ..
            */
-        wait(arr_req1);
+        wwait(arr_req1);
 
         /* Convolution */
         convolution( my_values1, tmp_values );
@@ -152,7 +152,7 @@ int main(int argc, char **argv)
            Il est obligatoire de terminer les envois/receptions sur my_values2
            avant de lire les valeurs dans convolution( my_values2, ..
            */
-        wait(arr_req2);
+        wwait(arr_req2);
 
         /* Convolution */
         convolution( my_values2, tmp_values );
@@ -163,8 +163,8 @@ int main(int argc, char **argv)
 
     /* On termine toujours les communications
      */
-    wait(arr_req1);
-    wait(arr_req2);
+    wwait(arr_req1);
+    wwait(arr_req2);
 
     tend = MPI_Wtime();
     telaps = tend - tbeg;

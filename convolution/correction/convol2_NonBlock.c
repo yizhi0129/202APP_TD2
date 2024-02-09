@@ -38,7 +38,7 @@ Icommunications(float *my_values, MPI_Request arr_req[4])
 }
 
 void
-wait(MPI_Request arr_req[4])
+wwait(MPI_Request arr_req[4])
 {
     MPI_Waitall(4, arr_req, MPI_STATUSES_IGNORE);
 
@@ -134,13 +134,13 @@ int main(int argc, char **argv)
     { 
         /* Communications */
         Icommunications( my_values1, arr_req1 );
-        Icommunications( my_values2, arr_req2 );
+        Icommunications( my_values2, arr_req2 ); // independantes donc en parallel (pas besoin de MPI_Waitall)
 
         /* Fin des requetes pour le premier tableau my_values1.
            Il est obligatoire de terminer les envois/receptions sur my_values1
            avant de lire les valeurs dans convolution( my_values1, ..
            */
-        wait(arr_req1);
+        wwait(arr_req1);
 
         /* Convolution */
         convolution( my_values1, tmp_values );
@@ -149,7 +149,7 @@ int main(int argc, char **argv)
            Il est obligatoire de terminer les envois/receptions sur my_values2
            avant de lire les valeurs dans convolution( my_values2, ..
            */
-        wait(arr_req2);
+        wwait(arr_req2);
 
         /* Convolution */
         convolution( my_values2, tmp_values );

@@ -1,0 +1,9 @@
+# 32 proc convol2.c
+Pt2pt Telaps = 104.628 s
+# why?
+
+# 32 proc convol2_NonBlock.c
+Pt2pt Telaps = 30.2368 s
+
+# 32 proc convol2_NonBlockV2.c
+Pt2pt Telaps = 32.2479 s
